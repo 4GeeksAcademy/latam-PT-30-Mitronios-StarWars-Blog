@@ -1,3 +1,9 @@
 /* 
     General Styles
 */
+body {
+    font-family: jedi-outline;
+    font-size: 1em;
+    background-image: url();
+    background-color: #cccccc;
+}
