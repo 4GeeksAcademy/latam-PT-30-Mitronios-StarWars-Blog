@@ -2,23 +2,23 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { Context } from "../store/appContext";
 
-export const Details = () => {
+export const SpecimenDetails = () => {
 
   const { actions, store } = useContext(Context)
-  const params = useParams()
+  const params = useParams() //const {id} = useParams()
   useEffect(() => {
-    actions.getHero(params.id)
+    actions.getSpecimen(params.id)
   }, [])
-  console.log(store.hero)
+  console.log(store.specimen)
   return (
     <div className="container">
       <div className="row bg-dark text-warning">
         <img className="col-6 mr-3" style={{ height: "500px", width: "auto" }}
-          src={"https://starwars-visualguide.com/assets/img/characters/" + (params.id) + ".jpg"}
-          alt={store.hero.properties?.name} />
+          src={"https://starwars-visualguide.com/assets/img/species/" + (params.id) + ".jpg"}
+          alt={store.specimen.properties?.name} />
         <div className="col-6 media-body">
-          <h5 className="mt-0">{store.hero.properties?.name}</h5>
-          <h6>{store.hero.description}</h6>
+          <h5 className="mt-0">{store.specimen.properties?.name}</h5>
+          <h6>{store.specimen.description}</h6>
         </div>
       </div>
       <hr className="line" />
@@ -26,39 +26,39 @@ export const Details = () => {
         <ul className="row list-group-horizontal mt-3">
           <li className="col-2 list-group-item bg-dark text-warning">
             <div>
-              Height:
+              Classification:
             </div>
-            {store.hero.properties?.height}
+            {store.specimen.properties?.classification}
           </li>
           <li className="col-2 list-group-item bg-dark text-warning">
             <div>
-              Mass:
+              Designation:
             </div>
-            {store.hero.properties?.mass}
+            {store.specimen.properties?.designation}
           </li>
           <li className="col-2 list-group-item bg-dark text-warning">
             <div>
-              Hair Color:
+              Average LifeSpan:
             </div>
-            {store.hero.properties?.hair_color}
+            {store.specimen.properties?.average_lifespan}
           </li>
           <li className="col-2 list-group-item bg-dark text-warning">
             <div>
-              Skin Color:
+              Language:
             </div>
-            {store.hero.properties?.skin_color}
+            {store.specimen.properties?.language}
           </li>
           <li className="col-2 list-group-item bg-dark text-warning">
             <div>
-              Eye Color:
+              Hair Colors:
             </div>
-            {store.hero.properties?.eye_color}
+            {store.specimen.properties?.hair_colors}
           </li>
           <li className="col-2 list-group-item bg-dark text-warning">
             <div>
-              Gender:
+              Eye Colors:
             </div>
-            {store.hero.properties?.gender}
+            {store.specimen.properties?.eye_colors}
           </li>
         </ul>
       </div>

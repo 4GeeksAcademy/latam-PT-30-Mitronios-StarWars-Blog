@@ -5,55 +5,73 @@ import { Context } from "../store/appContext";
 export const PlanetDetails = () => {
 
   const { actions, store } = useContext(Context)
-  const params = useParams() //const {id} = useParams()
+  const params = useParams()
   useEffect(() => {
     actions.getPlanet(params.id)
   }, [])
-  console.log(store.hero)
+  console.log(store.planet)
   return (
-    <React.Fragment>
-      <div className="media container bg-dark text-light">
+    <div className="container">
+      <div className="row bg-dark text-warning">
         {params.id == 1 ?
-          <img className="mr-3"
+          <img className="col-6 mr-3" style={{ height: "500px", width: "auto" }}
             src="https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png"
             alt={store.planet.properties?.name} />
           :
-          <img className="mr-3"
+          <img className="col-6 mr-3" style={{ height: "500px", width: "auto" }}
             src={"https://starwars-visualguide.com/assets/img/planets/" + (params.id) + ".jpg"}
             alt={store.planet.properties?.name} />
         }
-        <div className="media-body">
+        <div className="col-6 media-body">
           <h5 className="mt-0">{store.planet.properties?.name}</h5>
-          {store.planet.description}
+          <h6>{store.planet.description}</h6>
         </div>
       </div>
-      <div className="container bg-dark">
+      <hr className="line" />
+      <div className="bg-dark">
         <ul className="row list-group-horizontal mt-3">
-          <li className="col-2 list-group-item bg-dark text-light">
-            Height:
+          <li className="col-2 list-group-item bg-dark text-warning">
+            <div>
+              Diameter:
+            </div>
+            {store.planet.properties?.diameter}
           </li>
-          <li className="col-2 list-group-item bg-dark text-light">
-            Mass:
+          <li className="col-2 list-group-item bg-dark text-warning">
+            <div>
+              Gravity:
+            </div>
+            {store.planet.properties?.gravity}
           </li>
-          <li className="col-2 list-group-item bg-dark text-light">
-            Hair color:
+          <li className="col-2 list-group-item bg-dark text-warning">
+            <div>
+              Climate:
+            </div>
+            {store.planet.properties?.climate}
           </li>
-          <li className="col-2 list-group-item bg-dark text-light">
-            Skin color:
+          <li className="col-2 list-group-item bg-dark text-warning">
+            <div>
+              Population:
+            </div>
+            {store.planet.properties?.population}
           </li>
-          <li className="col-2 list-group-item bg-dark text-light">
-            Eye color:
+          <li className="col-2 list-group-item bg-dark text-warning">
+            <div>
+              Terrain:
+            </div>
+            {store.planet.properties?.terrain}
           </li>
-          <li className="col-2 list-group-item bg-dark text-light">
-            Gender:
+          <li className="col-2 list-group-item bg-dark text-warning">
+            <div>
+              Surface Water:
+            </div>
+            {store.planet.properties?.surface_water}
           </li>
         </ul>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 
-// {store.hero(
 //   item.height,
 //   item.mass,
 //   item.hair_color,

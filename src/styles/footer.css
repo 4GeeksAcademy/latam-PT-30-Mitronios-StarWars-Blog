@@ -1,5 +1,3 @@
 .pulsing {
-    animation: opacityPulse 3s ease-out;
-    animation-iteration-count: infinite; 
-    opacity: 1;
+    animation: pulse 3s infinite;
 }

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Species = () => {
     const { actions, store } = useContext(Context)
@@ -22,7 +23,7 @@ export const Species = () => {
                             alt={item.name} />
                         <div className="card-body">
                             <h5 className="card-title">{item.name}</h5>
-                            <a href="#" className="btn btn-info">Learn More</a>
+                            <Link to={"/specimendetails/" + (id + 1)} className="btn btn-info">Learn More</Link>
                             <div className="btn btn-outline-info float-end"
                                 onClick={() => actions.favorites(item.name)}
                             >

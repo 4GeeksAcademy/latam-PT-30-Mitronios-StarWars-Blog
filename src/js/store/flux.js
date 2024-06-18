@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			species: [],
 			hero: {},
 			planet: {},
-			singleSpecies: {},
+			specimen: {},
 			favorites: [],
 		},
 		actions: {
@@ -69,7 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Long live the empire", error)
 				}
 			},
-			
+
 			getPlanet: async (id) => {
 				try {
 					const heroResponse = await fetch("https://www.swapi.tech/api/planets/" + id)
@@ -81,18 +81,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			getSpecimen: async (id) => {
+				try {
+					const specimenResponse = await fetch("https://www.swapi.tech/api/species/" + id)
+					const data = await specimenResponse.json()
+					setStore({ specimen: data.result })
+				} catch (error) {
+					console.log("The force is not with you", error)
+				}
+			},
+
 
 			// Add here the Favorites and deleteFavorites!!!
 			favorites: (item) => {
 				const store = getStore()
-				if(store.favorites.includes(item)) { 
-					//Si ya existe lo elimina
+				if (store.favorites.includes(item)) {
+					//if favorite exists, erase favorite
 					let aux = []
 					aux = store.favorites.filter((elemento) => elemento != item)
-					setStore({favorites: aux})
+					setStore({ favorites: aux })
 				} else {
-					//Si no existe lo agrega
-					setStore({favorites: [...store.favorites, item]})
+					//If favorite doesn't exists, add favorite
+					setStore({ favorites: [...store.favorites, item] })
 				}
 			}
 

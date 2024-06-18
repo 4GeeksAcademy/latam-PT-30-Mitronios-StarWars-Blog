@@ -6,7 +6,7 @@ export const Navbar = () => {
 
 	const { store, actions } = useContext(Context)
 	return (
-		<nav className="navbar navbar-dark bg-dark mb-3">
+		<nav className="navbar navbar-dark bg-dark mb-3 sticky-top">
 			<div className="container">
 				<Link to="/" className="mt-4">
 					<span className="navbar-brand mb-0 h1">
@@ -16,28 +16,12 @@ export const Navbar = () => {
 						</p>
 					</span>
 				</Link>
-				{/* <div className="ml-auto">
-					<div className="dropdown">
-						<button className="btn btn-info dropdown-toggle"
-							type="button" id="dropdown-item"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							Favorites
-						</button>
-						<div className="dropdown-menu" aria-labelledby="Favorites">
-							{store.favorites.map((item, id) => (
-								<a className="dropdown-item" href="#">{item}</a>
-						))}
-						</div>
-					</div>
-				</div> */}
 				<div className="nav-item dropdown bg-info">
 					<a className="nav-link dropdown-toggle text-dark"
 						href="#" role="button"
 						data-bs-toggle="dropdown"
 						aria-expanded="false" >
-						Favorites</a>
+						Favorites {store.favorites.length}</a>
 					<ul className="dropdown-menu" >
 						{store.favorites.map((item, id) => (
 							<li key={id}>
