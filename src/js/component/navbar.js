@@ -27,7 +27,7 @@ export const Navbar = () => {
 							<li key={id}>
 								<a className="dropdown-item"
 									onClick={() => actions.favorites(item)} >
-									{item} <i class="fa fa-trash float-end"></i></a>
+									{item} <i className="fa fa-trash float-end"></i></a>
 							</li>))}
 					</ul>
 				</div>
